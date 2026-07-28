@@ -3,7 +3,22 @@ import { ArrowRight, Clock3, HeartPulse, Mail, MapPin, MessageCircle, Phone } fr
 import ServicesClient from './ServicesClient';
 import { IllustrationKids, IllustrationSurgery, IllustrationMother, IllustrationHeart, IllustrationLab, IllustrationAmbulance } from './illustrations';
 
-const doctors = ['Dr. A.K. Mishra', 'Dr. Vivek Mishra', 'Dr. Kartikeya Sharma', 'Dr. Snehya Tyagi', 'Dr. Amit Kumar', 'Dr. Vinod Chaudhary', 'Dr. Sapna Singh'];
+type Doctor = {
+  name: string;
+  initials: string;
+  image?: string;
+};
+
+const doctors: Doctor[] = [
+  { name: 'Dr. Atul Mishra', initials: 'AM', image: '/assets/Doctors/Dr Atul mishra.jpeg' },
+  { name: 'Dr. Vivek Mishra', initials: 'VM' },
+  { name: 'Dr. Kartikeya Sharma', initials: 'KS' },
+  { name: 'Dr. Sneha Tyagi', initials: 'ST', image: '/assets/Doctors/Dr_Sneha_Tyagi.jpeg' },
+  { name: 'Dr. Rahul Yadav', initials: 'RY', image: '/assets/Doctors/Dr Rahul Yadav.jpeg' },
+  { name: 'Dr. Amit Kumar', initials: 'AK' },
+  { name: 'Dr. Vinod Chaudhary', initials: 'VC' },
+  { name: 'Dr. Sapna Singh', initials: 'SS' },
+];
 const numbers = ['7452020359'];
 const whatsapp = 'https://wa.me/917452020359?text=Hello%20Bajrang%20Hospital%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment.';
 
@@ -34,7 +49,7 @@ export default function Home() {
       <header className="header">
         <div className="container nav">
           <a className="brand" href="#top" aria-label="Bajrang Hospital home"><Logo /></a>
-          <nav><a href="#services">Services</a><a href="#doctors">Doctors</a><a href="#contact">Contact</a></nav>
+          <nav><a href="/about">About</a><a href="/services">Services</a><a href="#doctors">Doctors</a><a href="/contact">Contact</a></nav>
           <a className="nav-cta" href={whatsapp}><MessageCircle size={18} /> WhatsApp us</a>
           <a className="nav-emergency" href="tel:8126470874" aria-label="Emergency call"><Phone size={16} /> Emergency</a>
           <button className="menu" aria-label="Open navigation">☰</button>
@@ -147,10 +162,16 @@ export default function Home() {
               <p>Meet the doctors who bring knowledge, experience and genuine care to every patient.</p>
             </div>
             <div className="doctor-grid">
-              {doctors.map((doctor, i) => (
-                <div className="doctor" key={doctor}>
-                  <div className="doctor-avatar">{['AK', 'VM', 'KS', 'ST', 'AK', 'VC', 'SS'][i]}</div>
-                  <div><b>{doctor}</b><span>Medical care specialist</span></div>
+              {doctors.map((doctor) => (
+                <div className="doctor" key={doctor.name}>
+                  <div className="doctor-avatar">
+                    {doctor.image ? (
+                      <Image src={doctor.image} alt={`${doctor.name} portrait`} fill sizes="72px" className="doctor-photo" />
+                    ) : (
+                      doctor.initials
+                    )}
+                  </div>
+                  <div><b>{doctor.name}</b><span>Medical care specialist</span></div>
                 </div>
               ))}
             </div>

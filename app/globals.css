@@ -121,7 +121,8 @@ h1 em,h2 em{font-style:italic;color:var(--saffron)}
 .team-head{margin-bottom:36px}
 .doctor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .doctor{background:#fff;padding:18px;display:flex;align-items:center;gap:14px;border-radius:6px}
-.doctor-avatar{width:46px;height:46px;border-radius:50%;background:#d7ebe3;color:var(--teal);display:grid;place-items:center;font-size:12px;font-weight:700}
+.doctor-avatar{width:72px;height:72px;flex:none;position:relative;border-radius:50%;overflow:hidden;background:#d7ebe3;color:var(--teal);display:grid;place-items:center;font-size:12px;font-weight:700}
+.doctor-photo{object-fit:cover;object-position:center 20%}
 .doctor b,.doctor span{display:block}
 .doctor b{font-size:14px}
 .doctor span{font-size:12px;color:var(--muted);margin-top:4px}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './page-shell.css';
 
 export const metadata: Metadata = {
   title: 'Bajrang Hospital | Quality Healthcare in Agra',
